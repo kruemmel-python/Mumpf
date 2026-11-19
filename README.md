@@ -1,4 +1,5 @@
 # Mumpf für Windows 11
+<img width="1376" height="768" alt="mumpf-cover-16x9" src="https://github.com/user-attachments/assets/f8b98849-6253-4035-a2c1-ef48bd0e08bf" />
 
 **Mumpf** ist ein natives, leichtgewichtiges Windows-11-Desktop-Helferlein in **C++20** (Win32, Direct2D, DirectWrite, Windows UI Automation, Shell COM & WinHTTP). Er sitzt als per-pixel transparentes Overlay ohne Fokus-Klau am Rand des aktiven Fensters, beobachtet den Arbeitskontext und hilft auf Klick mit deinem **lokalen LLM in LM Studio** weiter.
 
