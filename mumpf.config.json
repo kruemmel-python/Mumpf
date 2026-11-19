@@ -1,0 +1,9 @@
+{
+  "llm_enabled": true,
+  "llm_host": "127.0.0.1",
+  "llm_port": 1234,
+  "llm_model": "auto",
+  "kr_watch_dirs": [
+    "H:\\mumpf_for_Windows"
+  ]
+}

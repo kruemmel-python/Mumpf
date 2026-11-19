@@ -1,0 +1,23 @@
+# Build, Temp & lokale Tools (strikt nicht ins Repo)
+.tmp/
+.tools/
+build/
+dist/
+*.zip
+*.log
+
+# Nur Dokumentation.md aus Docs/ zulassen
+Docs/*
+!Docs/Dokumentation.md
+
+# Roh-Assets & QA-Generierungsdaten ausschließen (fertiges Spritesheet bleibt im Repo)
+mumpf-pet/
+mumpf-blickrichtungen-final.png
+mumpf-kontaktbogen-final.png
+
+# IDE / OS
+.vs/
+.vscode/
+*.user
+Thumbs.db
+desktop.ini

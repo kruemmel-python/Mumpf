@@ -1,0 +1,77 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Name="Mumpf für Windows 11"
+      Manufacturer="Ralf Krümmel"
+      Version="1.0.4"
+      UpgradeCode="8F4B9A2E-6C1D-4E5F-9A3B-2D7E8F1C4A90"
+      Scope="perMachine">
+
+    <MajorUpgrade DowngradeErrorMessage="Eine neuere Version von Mumpf ist bereits installiert." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Feature Id="MainFeature" Title="Mumpf Windows-11-Helferlein" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+      <ComponentGroupRef Id="DocsFiles" />
+      <ComponentGroupRef Id="ScriptFiles" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="Mumpf">
+        <Directory Id="DocsFolder" Name="Docs" />
+        <Directory Id="ScriptsFolder" Name="scripts" />
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="Mumpf" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+      <Component Id="MumpfExe" Guid="A1B2C3D4-1111-4222-8333-444455556601">
+        <File Id="MumpfExeFile" Source="H:\mumpf_for_Windows\build\Release\mumpf.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="MumpfSprite" Guid="A1B2C3D4-1111-4222-8333-444455556602">
+        <File Id="MumpfSpriteFile" Source="H:\mumpf_for_Windows\mumpf-spritesheet-v2-final.png" KeyPath="yes" />
+      </Component>
+      <Component Id="MumpfConfig" Guid="A1B2C3D4-1111-4222-8333-444455556603">
+        <File Id="MumpfConfigFile" Source="H:\mumpf_for_Windows\mumpf.config.json" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="DocsFiles" Directory="DocsFolder">
+      <Component Id="MumpfDocs" Guid="A1B2C3D4-1111-4222-8333-444455556604">
+        <File Id="MumpfDocsFile" Source="H:\mumpf_for_Windows\Docs\Dokumentaation.md" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="ScriptFiles" Directory="ScriptsFolder">
+      <Component Id="MumpfDemoScript" Guid="A1B2C3D4-1111-4222-8333-444455556605">
+        <File Id="MumpfDemoScriptFile" Source="H:\mumpf_for_Windows\scripts\simulate_kr_build.ps1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <Component Id="StartMenuShortcut" Directory="ApplicationProgramsFolder" Guid="A1B2C3D4-1111-4222-8333-444455556606">
+      <Shortcut Id="ApplicationStartMenuShortcut"
+                Name="Mumpf"
+                Description="Mumpf – Windows 11 Helferlein"
+                Target="[INSTALLFOLDER]mumpf.exe"
+                WorkingDirectory="INSTALLFOLDER" />
+      <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\MumpfWindows" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="A1B2C3D4-1111-4222-8333-444455556607">
+      <Shortcut Id="ApplicationDesktopShortcut"
+                Name="Mumpf"
+                Description="Mumpf – Windows 11 Helferlein"
+                Target="[INSTALLFOLDER]mumpf.exe"
+                WorkingDirectory="INSTALLFOLDER" />
+      <RegistryValue Root="HKCU" Key="Software\MumpfWindows" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+  </Package>
+</Wix>
